@@ -1,0 +1,33 @@
+name: Daily BOT Exchange Rates Update
+
+on:
+  schedule:
+    - cron: "0 5 * * *"   # 08:00 AM Tanzania time (UTC+3)
+  workflow_dispatch:
+
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run scraper
+        run: python project.py
+
+      - name: Commit updated CSV
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add bot_exchange_rates.csv
+          git commit -m "Daily BOT exchange rate update" || echo "No changes"
+          git push

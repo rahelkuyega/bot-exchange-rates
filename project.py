@@ -2,8 +2,7 @@
 # coding: utf-8
 
 # In[1]:
-
-
+g
 from bs4 import BeautifulSoup as bs
 
 import numpy as np
