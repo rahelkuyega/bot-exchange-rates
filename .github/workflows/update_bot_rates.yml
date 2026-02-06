@@ -1,5 +1,8 @@
 name: Daily BOT Exchange Rates Update
 
+permissions:
+    contents: write
+
 on:
   schedule:
     - cron: "0 5 * * *"   # 08:00 AM Tanzania time (UTC+3)
