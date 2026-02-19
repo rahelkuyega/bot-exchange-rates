@@ -220,7 +220,7 @@ df["source_url"]="https://www.bot.go.tz/ExchangeRate/excRates"
 
 
 #to store data into csv
-df.to_csv("bot_exchange_rates.csv", index=False)
+df.to_csv("bot_exchange_rates.csv",mode = "a", index=False)
 
 
 
